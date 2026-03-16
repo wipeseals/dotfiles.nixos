@@ -8,6 +8,12 @@
     packages = with pkgs; [
       git
       gh # github cli
+
+      # hobby usages
+      discord
+      steam
+      steamcmd
+      blender
     ];
   };
 
