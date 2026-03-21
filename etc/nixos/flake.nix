@@ -19,12 +19,6 @@
             home-manager.useUserPackages = true;
             home-manager.users.user = import ./home.nix;
           }
-
-          # vscode-server settings
-          vscode-server.nixosModules.default
-          ({ config, pkgs, ...}: {
-            services.vscode-server.enable = true;
-          })
         ];
       };
     }; 
