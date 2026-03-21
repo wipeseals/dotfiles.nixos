@@ -31,7 +31,12 @@
     };
     gh = {
       enable = true;
-      settings.editor = "hx";
+      settings.editor = "code";
+    };
+    vscode = {
+      extensions = with pkgs.vscode-extensions; [
+        ms-vscode-remote.remote-ssh
+      ];
     };
   };
 }
