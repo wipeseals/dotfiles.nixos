@@ -131,6 +131,11 @@
     fzf
     gh
 
+    # VRChat+Unity
+    unityhub
+    dotnet-sdk
+    alcom
+
     # common apps
     google-chrome
     vscode
