@@ -6,10 +6,15 @@
     username = "user";
     homeDirectory = "/home/user";
     packages = with pkgs; [
+      # cli tools
       git
       gh # github cli
 
-      # hobby usages
+      # common apps
+      google-chrome
+      vscode
+
+      # hobby usages apps
       discord
       steam
       steamcmd
