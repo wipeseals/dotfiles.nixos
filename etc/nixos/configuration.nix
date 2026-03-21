@@ -134,6 +134,7 @@
     helix
     fzf
     gh
+    starship
 
     # VRChat+Unity
     blender
@@ -157,6 +158,9 @@
       remotePlay.openFirewall = true; 
       dedicatedServer.openFirewall = true; 
       localNetworkGameTransfers.openFirewall = true;
+    };
+    starship = {
+      enable = true;
     };
   };
 
