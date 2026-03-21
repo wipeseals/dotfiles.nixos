@@ -24,7 +24,10 @@
 
   networking.hostName = "nixos"; # Define your hostname.
   networking.networkmanager.enable = true;
-
+  # 9757: WiVRn
+  networking.firewall.allowedTCPPorts = [ 9757 ];
+  networking.firewall.allowedUDPPorts = [ 9757 ];
+  
   time.timeZone = "Asia/Tokyo";
   i18n = {
     defaultLocale = "ja_JP.UTF-8";
@@ -100,6 +103,13 @@
     pulse.enable = true;
   };
 
+  # Enable avahi/adb for vr headset server
+  services.avahi = {
+    enable = true;
+    publish.userServices = true;
+  };
+  programs.adb.enable = true;
+
   users.users.user = {
     isNormalUser = true;
     description = "user";
@@ -145,6 +155,7 @@
     dotnetCorePackages.dotnet_8.sdk
     dotnet-sdk
     alcom
+    wivrn
 
     # common apps
     google-chrome
