@@ -103,7 +103,7 @@
   users.users.user = {
     isNormalUser = true;
     description = "user";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [
       kdePackages.kate
     ];
@@ -121,6 +121,7 @@
     mozc
     kdePackages.fcitx5-configtool
     kdePackages.fcitx5-qt
+    docker
 
     # cli tools
     tmux
@@ -134,6 +135,7 @@
     helix
     fzf
     gh
+    starship
 
     # VRChat+Unity
     blender
@@ -149,7 +151,7 @@
     # games
     steam
     steamcmd
-
+    protonplus
   ];
   programs = {
     steam = {
@@ -158,7 +160,23 @@
       dedicatedServer.openFirewall = true; 
       localNetworkGameTransfers.openFirewall = true;
     };
+    starship = {
+      enable = true;
+    };
   };
 
+  virtualisation.docker = {
+    enable = true;
+    daemon.settings = {
+        experimental = true;
+        default-address-pools = [
+          {
+            base = "172.30.0.0/16";
+            size = 24;
+          }
+        ];
+      };
+  };
+ 
   system.stateVersion = "25.11";
 }
