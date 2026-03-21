@@ -1,4 +1,12 @@
+# dotfiles.nixos
 
+## How to
+
+```bash
+git clone git@github.com:wipeseals/dotfiles.nixos.git
+cd dotfiles.nixos
+./setup.sh
+```
 
 ## References
 
