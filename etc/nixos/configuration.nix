@@ -24,7 +24,10 @@
 
   networking.hostName = "nixos"; # Define your hostname.
   networking.networkmanager.enable = true;
-
+  # 9757: WiVRn
+  networking.firewall.allowedTCPPorts = [ 9757 ];
+  networking.firewall.allowedUDPPorts = [ 9757 ];
+  
   time.timeZone = "Asia/Tokyo";
   i18n = {
     defaultLocale = "ja_JP.UTF-8";
@@ -100,10 +103,17 @@
     pulse.enable = true;
   };
 
+  # Enable avahi/adb for vr headset server
+  services.avahi = {
+    enable = true;
+    publish.userServices = true;
+  };
+  programs.adb.enable = true;
+
   users.users.user = {
     isNormalUser = true;
     description = "user";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "networkmanager" "wheel"];
     packages = with pkgs; [
       kdePackages.kate
     ];
@@ -136,12 +146,16 @@
     fzf
     gh
     starship
+    gcc
+    cargo # for rust tools
 
     # VRChat+Unity
     blender
     unityhub
+    dotnetCorePackages.dotnet_8.sdk
     dotnet-sdk
     alcom
+    wivrn
 
     # common apps
     google-chrome
@@ -166,16 +180,16 @@
   };
 
   virtualisation.docker = {
-    enable = true;
-    daemon.settings = {
-        experimental = true;
-        default-address-pools = [
-          {
-            base = "172.30.0.0/16";
-            size = 24;
-          }
-        ];
+    enable = false;
+    rootless = {
+      enable = true;
+      setSocketVariable = true;
+      # Optionally customize rootless Docker daemon settings
+      daemon.settings = {
+        dns = [ "1.1.1.1" "8.8.8.8" ];
+        registry-mirrors = [ "https://mirror.gcr.io" ];
       };
+    };
   };
  
   system.stateVersion = "25.11";
