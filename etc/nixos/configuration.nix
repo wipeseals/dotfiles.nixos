@@ -150,7 +150,7 @@
     # games
     steam
     steamcmd
-
+    protonplus
   ];
   programs = {
     steam = {
