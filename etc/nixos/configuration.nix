@@ -167,6 +167,10 @@
     steamcmd
     protonplus
   ];
+  environment.sessionVariables = {
+    DOTNET_ROOT = "${pkgs.dotnetCorePackages.runtime_8_0-bin}/share/dotnet";
+  };
+
   programs = {
     steam = {
       enable = true;
