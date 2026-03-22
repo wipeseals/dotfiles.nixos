@@ -110,6 +110,9 @@
   };
   programs.adb.enable = true;
 
+  # for `#!/bin/bash`
+  services.envfs.enable = true;
+
   users.users.user = {
     isNormalUser = true;
     description = "user";
