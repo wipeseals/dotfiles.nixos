@@ -30,7 +30,7 @@
       fsType = "btrfs";
     };
 
-  fileSystems."/storage" =
+  fileSystems."/opt" =
     { device = "/dev/disk/by-uuid/8db5d3a2-41b4-4a99-a108-68efc3aa9bed";
       fsType = "btrfs";
     };
