@@ -51,7 +51,22 @@
     ];
   };
 
+  # fonts
+  fonts.enableDefaultPackages = true;
   fonts.fonts = with pkgs; [
+    noto-fonts
+    noto-fonts-cjk-sans
+    noto-fonts-color-emoji
+    liberation_ttf
+    fira-code
+    fira-code-symbols
+    mplus-outline-fonts.githubRelease
+    dina-font
+    proggyfonts
+
+    ubuntu-classic
+    liberation_ttf
+
     carlito
     dejavu_fonts
     ipafont
@@ -110,6 +125,21 @@
   };
   programs.adb.enable = true;
 
+  # for `#!/bin/bash`
+  services.envfs.enable = true;
+  # for shared libs
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    # for Vivado/Vitis installer, etc...
+    xorg.libXext
+    xorg.libX11
+    xorg.libXrender
+    xorg.libXtst
+    xorg.libXi
+    freetype
+    fontconfig
+  ];
+
   users.users.user = {
     isNormalUser = true;
     description = "user";
@@ -147,14 +177,10 @@
     gh
     starship
     gcc
-    cargo # for rust tools
 
     # VRChat+Unity
     blender
     unityhub
-    dotnetCorePackages.dotnet_8.sdk
-    dotnet-sdk
-    alcom
     wivrn
 
     # common apps
@@ -167,6 +193,9 @@
     steamcmd
     protonplus
   ];
+  environment.sessionVariables = {
+  };
+
   programs = {
     steam = {
       enable = true;
