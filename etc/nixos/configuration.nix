@@ -123,7 +123,7 @@
     enable = true;
     publish.userServices = true;
   };
-  programs.adb.enable = true;
+  programs.adb.enable = false; # enable this to install apps on the headset
 
   # for `#!/bin/bash`
   services.envfs.enable = true;
@@ -183,6 +183,7 @@
     unityhub
     wivrn
     wayvr
+    alcom
 
     # common apps
     google-chrome
