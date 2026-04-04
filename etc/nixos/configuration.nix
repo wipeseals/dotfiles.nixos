@@ -182,6 +182,7 @@
     blender
     unityhub
     wivrn
+    wayvr
 
     # common apps
     google-chrome
