@@ -53,9 +53,11 @@
 
   # fonts
   fonts.enableDefaultPackages = true;
+  fonts.fontDir.enable = true;
   fonts.fonts = with pkgs; [
     noto-fonts
     noto-fonts-cjk-sans
+    noto-fonts-cjk-serif
     noto-fonts-color-emoji
     liberation_ttf
     fira-code
@@ -74,6 +76,7 @@
     source-code-pro
     ttf_bitstream_vera
   ];
+  fonts.fontconfig.enable = true;
   fonts.fontconfig.defaultFonts = {
     monospace = [
       "DejaVu Sans Mono"
@@ -155,6 +158,7 @@
     # core tools
     vim
     git
+    git-lfs
     curl
     wget
     direnv
@@ -184,6 +188,9 @@
     wivrn
     wayvr
     alcom
+
+    # cad
+    kicad
 
     # common apps
     google-chrome
