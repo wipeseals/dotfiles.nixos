@@ -188,6 +188,7 @@
     wivrn
     wayvr
     alcom
+    gimp
 
     # cad
     kicad
