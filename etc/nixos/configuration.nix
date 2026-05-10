@@ -121,6 +121,11 @@
     pulse.enable = true;
   };
 
+  # Enable bluetooth
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+  services.blueman.enable = true;
+
   # Enable avahi/adb for vr headset server
   services.avahi = {
     enable = true;
@@ -212,6 +217,14 @@
       remotePlay.openFirewall = true; 
       dedicatedServer.openFirewall = true; 
       localNetworkGameTransfers.openFirewall = true;
+      package = pkgs.steam.override {
+        extraProfile = ''
+          # Allows Monado/WiVRn to be used
+          export PRESSURE_VESSEL_IMPORT_OPENXR_1_RUNTIMES=1
+          # Fixes timezones on VRChat
+          unset TZ
+        '';
+      };
     };
     starship = {
       enable = true;
